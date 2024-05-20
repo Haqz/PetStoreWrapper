@@ -1,0 +1,14 @@
+
+services:
+    workspace:
+        build: docker/workspace
+        image: petstore/workspace:0.1
+        ports:
+            - "8080:80"
+        volumes:
+            - "./:/var/www/petstore"
+            - "./docker/workspace/config/custom.ini:/etc/php/8.2/cli/conf.d/custom.ini"
+        networks:
+            - backend
+networks:
+  backend:
